@@ -15,6 +15,7 @@ router.post("/register", async (req, res) => {
     const newUser = new User({
       username,
       password: hashedPassword,
+      role: "Chevalier",
     });
     await newUser.save();
     return res.status(200).json({ success: `${username} added successfully` });

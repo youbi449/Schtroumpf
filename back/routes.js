@@ -15,7 +15,7 @@ router.post("/register", async (req, res) => {
     const newUser = new User({
       username,
       password: hashedPassword,
-      role: "Chevalier",
+      roles: "Chevalier",
     });
     await newUser.save();
     return res.status(200).json({ success: `${username} added successfully` });
@@ -24,7 +24,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
     return res.status(404).json({ error: "Missing credentials" });

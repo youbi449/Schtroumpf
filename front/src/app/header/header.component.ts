@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { isLogged } from 'src/utils';
 
 @Component({
@@ -7,7 +8,12 @@ import { isLogged } from 'src/utils';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
   isLogged: boolean = isLogged();
+
+  logOut(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth']).then(() => window.location.reload());
+  }
   ngOnInit(): void {}
 }

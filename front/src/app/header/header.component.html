@@ -1,16 +1,14 @@
 <nav>
   <mat-toolbar>
-    {{ isLogged }}
     <h2><a routerLink="/">Schtroumf</a></h2>
     <div class="divider"></div>
-    <ng-template *ngIf="!isLogged; else elseBlock">
-      <p>caca</p>
-      <a mat-icon-button routerLink="/auth"><mat-icon>login</mat-icon></a>
-    </ng-template>
+    <div *ngIf="isLogged; else elseBlock">
+      <button mat-icon-button (click)="logOut()">
+        <mat-icon style="color: red">login</mat-icon>
+      </button>
+    </div>
     <ng-template #elseBlock>
-      <a mat-icon-button routerLink="/auth"
-        ><mat-icon>account_box</mat-icon>
-      </a>
+      <a mat-icon-button routerLink="/auth"><mat-icon>account_box</mat-icon></a>
     </ng-template>
   </mat-toolbar>
 </nav>

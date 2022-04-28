@@ -10,7 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from 'src/material.module';
+import { HomeLoggedComponent } from './home-logged/home-logged.component';
+import { isLogged } from 'src/utils';
 
+const Home = isLogged() ? HomeLoggedComponent : HomeComponent;
 const routes: Routes = [
   {
     path: 'auth',
@@ -18,12 +21,18 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: HomeComponent,
+    component: Home,
   },
 ];
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, AuthComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    AuthComponent,
+    HomeComponent,
+    HomeLoggedComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

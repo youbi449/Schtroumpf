@@ -1,0 +1,18 @@
+.account {
+  display: flex;
+  justify-content: center;
+}
+
+.account .card {
+  width: 30%;
+  margin: 0 2rem;
+}
+
+.account .card h2 {
+  text-align: center;
+}
+
+.data,
+.action {
+  margin-left: auto;
+}

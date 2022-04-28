@@ -1,0 +1,43 @@
+<div class="account">
+  <mat-card class="card">
+    <h2>Profil</h2>
+    <mat-list>
+      <mat-list-item
+        >Nom d'utilisateur:
+        <span class="data">{{ user.username }}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-label>Role:</mat-label>
+        <select
+          [(value)]="user.roles"
+          class="action"
+          #role
+          (change)="changeRole(role.value)"
+        >
+          <option value="Chevalier">Chevalier</option>
+          <option value="Alchimiste">Alchimiste</option>
+          <option value="Sorcier">Sorcier</option>
+        </select>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+  <mat-card class="card">
+    <h2>Gerer vos Schtroumpf</h2>
+    <mat-action-list>
+      <button
+        mat-list-item
+        *ngFor="let user of schtroumpf"
+        (click)="
+          isUserInFriendList(user.id)
+            ? deleteFriend(user.id)
+            : addToFriend(user.id)
+        "
+      >
+        {{ user.username }}
+        <span class="action">
+          {{ isUserInFriendList(user.id) ? "Supprimer" : "Ajouter" }}</span
+        >
+      </button>
+    </mat-action-list>
+  </mat-card>
+</div>

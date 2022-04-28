@@ -36,7 +36,9 @@ export class AuthComponent implements OnInit {
       next: (response) => {
         const token = response.body?.token!;
         localStorage.setItem('token', token);
-        this.router.navigate(['/']);
+        this.router.navigate(['/']).then(() => {
+          window.location.reload();
+        });
       },
     });
   }

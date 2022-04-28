@@ -15,7 +15,7 @@ export class AuthService {
     const { username, password } = credentials;
     return this.http
       .post(
-        'http://localhost:5000/api/register',
+        'http://localhost:5000/api/auth/register',
         {
           username,
           password,
@@ -32,7 +32,7 @@ export class AuthService {
   login(credentials: Credentials) {
     return this.http
       .post<LoginToken>(
-        'http://localhost:5000/api/login',
+        'http://localhost:5000/api/auth/',
         { ...credentials },
         { observe: 'response' }
       )
